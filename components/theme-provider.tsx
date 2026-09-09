@@ -12,7 +12,7 @@ function ThemeProvider({
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
+      storageKey="aetheria-theme"
       {...props}
     >
       <ThemeHotkey />

@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils"
 
 export function PageHero({ eyebrow, title, children, actions }: { eyebrow: string; title: string; children: React.ReactNode; actions?: React.ReactNode }) {
   return (
-    <section className="border-b border-border bg-muted/30 py-18 sm:py-24">
+    <section className="bg-background py-18">
       <div className="site-container max-w-[1180px]">
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-4xl font-heading text-4xl font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-6xl">{title}</h1>
+        <h1 className="mt-4 max-w-[20ch] font-heading text-4xl font-bold leading-[1.12] tracking-[-0.02em] sm:text-[3.2rem]">{title}</h1>
         <div className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">{children}</div>
         {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
       </div>
@@ -30,7 +30,7 @@ export function ContactCta({ title = "Want to talk with the team?", text = "Ques
   return (
     <section className="py-16">
       <div className="site-container">
-        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-card p-7 shadow-sm sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-md border border-border bg-card p-7 transition-[border-color,box-shadow] hover:border-border-strong hover:shadow-[var(--shadow-sm)] sm:flex-row sm:items-center">
           <div><h2 className="font-heading text-xl font-bold">{title}</h2><p className="mt-2 text-muted-foreground">{text}</p></div>
           <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "px-5")}>Get in touch</Link>
         </div>

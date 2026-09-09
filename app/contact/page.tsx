@@ -13,7 +13,7 @@ export default function ContactPage() {
       <PageHero eyebrow="Contact" title="Let's talk.">Questions about FOM Order Manager, or about Aetheria Tech in general — reach us directly, or prepare a message below.</PageHero>
       <section className="py-20 sm:py-28"><div className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
         <div className="space-y-8">
-          <ContactItem title="Email"><a className="text-primary hover:underline" href="mailto:aetheria.techmm@gmail.com">aetheria.techmm@gmail.com</a></ContactItem>
+          <ContactItem title="Email"><a className="text-brand hover:underline" href="mailto:aetheria.techmm@gmail.com">aetheria.techmm@gmail.com</a></ContactItem>
           <ContactItem title="Office">No.36, Thiri Yadanar St,<br />Shwe Hnin Si Ward,<br />Mingaladon, Yangon, Myanmar</ContactItem>
         </div>
         <Card><CardHeader><h2 className="font-heading text-2xl font-bold">Send a message</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">This form opens your default email app with the message prepared. You can also email us directly.</p></CardHeader><CardContent><ContactForm /></CardContent></Card>

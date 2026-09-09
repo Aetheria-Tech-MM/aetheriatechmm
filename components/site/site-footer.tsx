@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-muted/35 py-14">
+    <footer className="border-t border-border bg-surface-sunken pt-18">
       <div className="site-container grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1.4fr]">
         <div>
           <Link href="/" className="font-heading font-extrabold tracking-tight">Aetheria Tech</Link>
@@ -18,7 +18,7 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="site-container mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="site-container mt-12 flex flex-col gap-3 border-t border-border py-5 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
         <span>© {new Date().getFullYear()} Aetheria Tech Company Limited. All rights reserved.</span>
         <div className="flex gap-5"><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms of Service</Link></div>
       </div>

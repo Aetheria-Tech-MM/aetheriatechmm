@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
+import { SITE_URL } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const manropeHeading = Manrope({ subsets: ["latin"], variable: "--font-heading" })
@@ -17,7 +18,7 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aetheria.tech"),
+  metadataBase: new URL(SITE_URL),
   title: { default: "Aetheria Tech — Practical software products", template: "%s — Aetheria Tech" },
   description: "Aetheria Tech Company Limited builds practical software products for real business workflows.",
   openGraph: {

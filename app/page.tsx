@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ContactCta, SectionHeading } from "@/components/site/page-sections"
 import { cn } from "@/lib/utils"
 import { createPageMetadata } from "@/lib/seo"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = createPageMetadata({ title: "Aetheria Tech — Practical software products for business operations", description: "Aetheria Tech Company Limited builds practical software products for real business workflows. Our current product, FOM Order Manager, brings chat-driven orders, customers, and delivery into one workspace.", path: "/", absoluteTitle: true })
 
@@ -21,9 +22,9 @@ export default function Page() {
 
   return (
     <main id="main">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Aetheria Tech Company Limited", url: "https://aetheria.tech/", email: "aetheria.techmm@gmail.com", address: { "@type": "PostalAddress", streetAddress: "No.36, Thiri Yadanar St, Shwe Hnin Si Ward, Mingaladon", addressLocality: "Yangon", addressCountry: "MM" }, makesOffer: { "@type": "Offer", itemOffered: { "@type": "SoftwareApplication", name: "FOM Order Manager", applicationCategory: "BusinessApplication", operatingSystem: "Web, Android, iOS", url: "https://getfom.com/" } } }) }} />
-      <section className="relative overflow-hidden border-b border-border py-20 sm:py-28 lg:py-36">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_25%,color-mix(in_oklch,var(--primary)_16%,transparent),transparent_36%)]" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Aetheria Tech Company Limited", url: SITE_URL, email: "aetheria.techmm@gmail.com", address: { "@type": "PostalAddress", streetAddress: "No.36, Thiri Yadanar St, Shwe Hnin Si Ward, Mingaladon", addressLocality: "Yangon", addressCountry: "MM" }, makesOffer: { "@type": "Offer", itemOffered: { "@type": "SoftwareApplication", name: "FOM Order Manager", applicationCategory: "BusinessApplication", operatingSystem: "Web, Android, iOS", url: "https://getfom.com/" } } }) }} />
+      <section className="relative overflow-hidden pb-18 pt-26">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_25%,color-mix(in_oklch,var(--brand)_16%,transparent),transparent_36%)]" />
         <div className="site-container grid items-center gap-14 lg:grid-cols-[1.06fr_.94fr]">
           <div className="max-w-3xl">
             <p className="eyebrow">Practical software, built in Yangon</p>
@@ -36,22 +37,22 @@ export default function Page() {
             <p className="mt-8 text-sm text-muted-foreground">Based in Yangon, Myanmar — building for teams who run their operations through everyday tools.</p>
           </div>
 
-          <div className="relative mx-auto aspect-[6/5] w-full max-w-xl rounded-[2rem] border border-border bg-card p-5 shadow-2xl shadow-primary/10" aria-hidden="true">
+          <div className="relative mx-auto aspect-[6/5] w-full max-w-xl rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-lg)]" aria-hidden="true">
             <div className="absolute inset-0 rounded-[2rem] bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:28px_28px] opacity-45" />
             <div className="absolute left-[9%] top-[20%] grid gap-12">
-              {["Messenger", "Telegram", "Viber"].map((label) => <div key={label} className="rounded-full border border-primary/40 bg-background px-3 py-1.5 text-xs font-medium text-primary shadow-sm">{label}</div>)}
+              {["Messenger", "Telegram", "Viber"].map((label) => <div key={label} className="rounded-full border border-brand/40 bg-background px-3 py-1.5 text-xs font-semibold text-brand shadow-[var(--shadow-sm)]">{label}</div>)}
             </div>
             <div className="absolute bottom-[16%] right-[7%] top-[15%] w-[54%] rounded-2xl border border-border bg-background/95 p-5 shadow-xl">
-              <div className="flex items-center gap-2"><span className="size-2 rounded-full bg-primary" /><span className="h-2 w-24 rounded bg-foreground/16" /></div>
+              <div className="flex items-center gap-2"><span className="size-2 rounded-full bg-brand" /><span className="h-2 w-24 rounded bg-foreground/16" /></div>
               <div className="my-5 h-px bg-border" />
               <div className="space-y-3"><span className="block h-2 w-4/5 rounded bg-foreground/14" /><span className="block h-2 w-3/5 rounded bg-foreground/9" /><span className="block h-2 w-full rounded bg-foreground/9" /></div>
-              <div className="absolute bottom-5 left-5 right-5 rounded-lg bg-primary/12 p-3"><span className="block h-2 w-2/3 rounded bg-primary" /></div>
+              <div className="absolute bottom-5 left-5 right-5 rounded-sm bg-brand-soft p-3"><span className="block h-2 w-2/3 rounded bg-brand" /></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-muted/30 py-20 sm:py-28">
+      <section className="border-y border-border bg-surface-sunken py-20 sm:py-26">
         <div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="eyebrow">About Aetheria</p>
@@ -62,10 +63,10 @@ export default function Page() {
             </div>
             <Link href="/about" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-7 px-5")}>More about Aetheria</Link>
           </div>
-          <div className="grid grid-cols-2 gap-4 rounded-3xl border border-border bg-background p-5">
+          <div className="grid grid-cols-2 gap-4 rounded-lg border border-border bg-background p-5">
             {["Customer chat", "Draft orders", "Delivery status", "Business reports"].map((item, index) => (
-              <div key={item} className={cn("rounded-2xl border border-border p-5", index === 1 && "border-primary/50 bg-primary/6")}>
-                <span className="text-xs font-bold text-primary">0{index + 1}</span><p className="mt-8 font-heading font-bold">{item}</p>
+              <div key={item} className={cn("rounded-md border border-border p-5", index === 1 && "border-brand/50 bg-brand-soft")}>
+                <span className="text-xs font-bold text-brand">0{index + 1}</span><p className="mt-8 font-heading font-bold">{item}</p>
               </div>
             ))}
           </div>
@@ -79,11 +80,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="product" className="bg-muted/30 py-20 sm:py-28">
+      <section id="product" className="border-y border-border bg-surface-sunken py-20 sm:py-26">
         <div className="site-container grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <div className="relative min-h-96 overflow-hidden rounded-3xl border border-border bg-background p-6 shadow-sm">
-            <div className="w-3/5 rounded-2xl border border-border bg-muted/40 p-4"><div className="h-2 w-4/5 rounded bg-foreground/15" /><div className="mt-4 rounded-xl bg-primary/12 p-4"><div className="h-2 w-full rounded bg-primary/70" /><div className="mt-2 h-2 w-2/3 rounded bg-primary/40" /></div></div>
-            <div className="absolute bottom-6 right-6 w-[58%] rounded-2xl border border-primary/45 bg-background p-5 shadow-xl"><p className="text-xs font-bold text-primary">DRAFT ORDER</p><div className="my-4 h-px bg-border" /><div className="space-y-3"><div className="h-2 w-3/4 rounded bg-foreground/15" /><div className="h-2 w-full rounded bg-foreground/10" /><div className="h-2 w-4/5 rounded bg-foreground/10" /></div><div className="mt-8 h-9 rounded-lg bg-foreground" /></div>
+          <div className="relative min-h-96 overflow-hidden rounded-lg border border-border bg-background p-6 shadow-[var(--shadow-sm)]">
+            <div className="w-3/5 rounded-lg border border-border bg-muted/40 p-4"><div className="h-2 w-4/5 rounded bg-foreground/15" /><div className="mt-4 rounded-md bg-brand-soft p-4"><div className="h-2 w-full rounded bg-brand/70" /><div className="mt-2 h-2 w-2/3 rounded bg-brand/40" /></div></div>
+            <div className="absolute bottom-6 right-6 w-[58%] rounded-lg border border-brand/45 bg-background p-5 shadow-[var(--shadow-md)]"><p className="text-xs font-bold text-brand">DRAFT ORDER</p><div className="my-4 h-px bg-border" /><div className="space-y-3"><div className="h-2 w-3/4 rounded bg-foreground/15" /><div className="h-2 w-full rounded bg-foreground/10" /><div className="h-2 w-4/5 rounded bg-foreground/10" /></div><div className="mt-8 h-9 rounded-sm bg-foreground" /></div>
           </div>
           <div>
             <p className="eyebrow">Our product</p>
@@ -100,15 +101,15 @@ export default function Page() {
         <div className="site-container">
           <SectionHeading eyebrow="Why Aetheria" title="How we approach building software" />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {approach.map(([title, text], index) => <Card key={title}><CardContent><span className="text-xs font-bold text-primary">0{index + 1}</span><h3 className="mt-6 font-heading text-lg font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></CardContent></Card>)}
+            {approach.map(([title, text], index) => <Card key={title}><CardContent><span className="text-xs font-bold text-brand">0{index + 1}</span><h3 className="mt-6 font-heading text-lg font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></CardContent></Card>)}
           </div>
         </div>
       </section>
 
-      <section className="bg-zinc-950 py-20 text-zinc-50 sm:py-28">
+      <section className="border-y border-onyx-border bg-onyx py-20 text-onyx-foreground sm:py-26">
         <div className="site-container grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-          <div><p className="eyebrow">What&apos;s next</p><h2 className="mt-4 max-w-2xl font-heading text-4xl font-bold tracking-[-0.03em] sm:text-5xl">FOM is where we&apos;re starting.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-400">We&apos;re building toward a small portfolio of practical software products, each designed around a real business need. FOM Order Manager is the first; it won&apos;t be the last.</p></div>
-          <div className="flex items-center gap-3 lg:justify-end" aria-hidden="true"><span className="size-12 rounded-xl border border-zinc-700" /><span className="h-px w-12 bg-zinc-700" /><span className="size-18 rounded-2xl border border-primary bg-zinc-900 shadow-lg shadow-primary/15" /><span className="h-px w-12 border-t border-dashed border-zinc-700" /><span className="size-12 rounded-xl border border-dashed border-zinc-700" /></div>
+          <div><p className="eyebrow">What&apos;s next</p><h2 className="mt-4 max-w-2xl font-heading text-4xl font-bold tracking-[-0.03em] text-onyx-foreground sm:text-5xl">FOM is where we&apos;re starting.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-onyx-muted">We&apos;re building toward a small portfolio of practical software products, each designed around a real business need. FOM Order Manager is the first; it won&apos;t be the last.</p></div>
+          <div className="flex items-center gap-3 lg:justify-end" aria-hidden="true"><span className="size-12 rounded-md border border-onyx-border" /><span className="h-px w-12 bg-onyx-border" /><span className="size-18 rounded-lg border border-brand bg-[#1f2444] shadow-lg shadow-brand/15" /><span className="h-px w-12 border-t border-dashed border-onyx-border" /><span className="size-12 rounded-md border border-dashed border-onyx-border" /></div>
         </div>
       </section>
 
