@@ -11,7 +11,7 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.52 0.105 223.128);
+    --primary: oklch(0.54 0.13 215);
     --primary-foreground: oklch(0.984 0.019 200.873);
     --secondary: oklch(0.967 0.001 286.375);
     --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -28,7 +28,7 @@
     --chart-3: oklch(0.609 0.126 221.723);
     --chart-4: oklch(0.52 0.105 223.128);
     --chart-5: oklch(0.45 0.085 224.283);
-    --radius: 0.625rem;
+    --radius: 0.75rem;
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.145 0 0);
     --sidebar-primary: oklch(0.609 0.126 221.723);
@@ -46,7 +46,7 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.45 0.085 224.283);
+    --primary: oklch(0.72 0.13 202);
     --primary-foreground: oklch(0.984 0.019 200.873);
     --secondary: oklch(0.274 0.006 286.033);
     --secondary-foreground: oklch(0.985 0 0);
@@ -128,5 +128,32 @@
     }
   html {
     @apply font-sans;
+    scroll-padding-top: 5rem;
     }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-[1180px] px-5 sm:px-7 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-primary;
+  }
+
+  .legal-content {
+    @apply text-base leading-8 text-muted-foreground;
+  }
+
+  .legal-content h2 {
+    @apply mt-10 mb-3 font-heading text-2xl font-bold text-foreground;
+  }
+
+  .legal-content ul {
+    @apply my-5 list-disc space-y-2 pl-6;
+  }
+
+  .legal-content a {
+    @apply text-primary underline underline-offset-4;
+  }
 }
