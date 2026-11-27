@@ -27,17 +27,11 @@ export const metadata: Metadata = {
     title: "Aetheria Tech — Practical software products",
     description: "Practical software products designed around real business workflows.",
     url: "/",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Aetheria Tech — Practical software for real business operations" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Aetheria Tech — Practical software products",
     description: "Practical software products designed around real business workflows.",
-    images: ["/og.png"],
-  },
-  icons: {
-    icon: [{ url: "/logos/favicon-32.png", sizes: "32x32", type: "image/png" }, { url: "/logos/favicon-16.png", sizes: "16x16", type: "image/png" }],
-    apple: [{ url: "/logos/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 }
 

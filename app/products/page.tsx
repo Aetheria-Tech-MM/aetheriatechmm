@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"
@@ -8,6 +9,11 @@ import { cn } from "@/lib/utils"
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = createPageMetadata({ title: "FOM Order Manager", description: "FOM Order Manager brings customer messages, draft orders, customer records, delivery tracking, and reporting into one workspace for chat-first shops.", path: "/products" })
+
+const products = [
+  { name: "FOM Order Manager", mark: "/brand/products/fom-mark.svg", href: "#features", cta: "See FOM features", text: "Chat-driven orders, customers, delivery, and reports in one workspace for shops selling through Messenger, Telegram, and Viber." },
+  { name: "Billleaf", mark: "/brand/products/billleaf-mark.svg", href: "https://billleaf.com/", cta: "Visit billleaf.com", text: "An all-in-one business workspace for freelancers: quotes, contracts, projects, time tracking, invoices, and payments in one place." },
+]
 
 const features = [
   ["Order management", "Track every order from confirmation through delivery, with a clear status at each stage."],
@@ -24,7 +30,9 @@ const features = [
 export default function ProductsPage() {
   return (
     <main id="main">
-      <PageHero eyebrow="Our product" title="FOM Order Manager" actions={<><Link href="https://getfom.com/" className={cn(buttonVariants({ size: "lg" }), "px-5")}>Visit getfom.com</Link><Link href="#pricing" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-5")}>See pricing</Link></>}>A cleaner workflow for chat-driven orders, customers, and delivery — built for shops that sell through Messenger, Telegram, and Viber.</PageHero>
+      <PageHero eyebrow="Our products" title="FOM Order Manager" actions={<><Link href="https://getfom.com/" className={cn(buttonVariants({ size: "lg" }), "px-5")}>Visit getfom.com</Link><Link href="#pricing" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-5")}>See pricing</Link></>}>A cleaner workflow for chat-driven orders, customers, and delivery — built for shops that sell through Messenger, Telegram, and Viber.</PageHero>
+
+      <section aria-labelledby="family" className="pb-6"><div className="site-container"><h2 id="family" className="eyebrow">Products by Aetheria Tech</h2><ul className="mt-5 grid gap-4 md:grid-cols-2">{products.map((product) => <li key={product.name}><Link href={product.href} className="flex h-full items-start gap-5 rounded-md border border-border bg-card p-6 transition-[border-color,box-shadow] hover:border-border-strong hover:shadow-[var(--shadow-sm)]"><Image src={product.mark} alt="" width={56} height={56} unoptimized className="size-14 shrink-0 rounded-lg" /><div><h3 className="font-heading text-lg font-bold">{product.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{product.text}</p><span className="mt-3 inline-block text-sm font-semibold text-brand">{product.cta}</span></div></Link></li>)}</ul></div></section>
 
       <section className="py-20 sm:py-28"><div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center"><div><SectionHeading title="Your customers message you. FOM turns it into an order." /><div className="space-y-4 leading-7 text-muted-foreground"><p>Orders, customers, reports, and delivery are kept in one workspace, synced across web, Android, and iOS. A team selects the part of the conversation that matters, and FOM prefills the draft order for review.</p><p>FOM is built specifically for chat-first shop operations — not a general-purpose order tool retrofitted for chat.</p></div></div><div className="rounded-lg border border-border bg-muted/30 p-6"><div className="max-w-xs rounded-lg border border-border bg-background p-4"><div className="h-8 rounded-full bg-muted" /><div className="ml-auto mt-4 h-12 w-4/5 rounded-lg bg-brand-soft" /><div className="mt-4 h-8 w-3/5 rounded-full bg-muted" /></div><div className="relative -mt-8 ml-auto w-3/5 rounded-lg border border-brand/50 bg-background p-5 shadow-[var(--shadow-md)]"><p className="text-xs font-bold text-brand">DRAFT ORDER</p><div className="mt-5 space-y-3">{["Customer", "Items", "Delivery"].map((item) => <div key={item}><p className="text-[10px] text-muted-foreground">{item}</p><div className="mt-1 h-2 rounded bg-foreground/12" /></div>)}</div><div className="mt-6 h-9 rounded-sm bg-foreground" /></div></div></div></section>
 
