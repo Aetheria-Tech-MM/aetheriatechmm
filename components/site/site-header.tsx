@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons"
 
+import { Logo } from "@/components/brand/logo"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -54,12 +54,8 @@ export function SiteHeader() {
   return (
     <header className={cn("fixed inset-x-0 top-0 z-50 h-[76px] border-b border-transparent bg-transparent transition-[background-color,border-color,box-shadow] duration-200", (scrolled || open) && "border-border bg-[var(--scrim)] shadow-[var(--shadow-sm)] backdrop-blur-[10px]")}>
       <div className="site-container flex h-full items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3 font-heading text-[1.15rem] font-extrabold tracking-[-0.02em]" aria-label="Aetheria Tech home">
-          <span className="relative block h-[26px] w-[46px] shrink-0 overflow-hidden">
-            <Image src="/logos/icon-light.png" alt="" fill sizes="46px" className="object-contain dark:hidden" priority />
-            <Image src="/logos/icon-dark.png" alt="" fill sizes="46px" className="hidden object-contain dark:block" priority />
-          </span>
-          Aetheria Tech
+        <Link href="/" className="text-[1.15rem]" aria-label="Aetheria Tech home">
+          <Logo />
         </Link>
 
         <nav className="hidden md:block" aria-label="Primary navigation">

@@ -1,15 +1,17 @@
 import Link from "next/link"
 
+import { Logo } from "@/components/brand/logo"
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-surface-sunken pt-18">
       <div className="site-container grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1.4fr]">
         <div>
-          <Link href="/" className="font-heading font-extrabold tracking-tight">Aetheria Tech</Link>
+          <Link href="/" aria-label="Aetheria Tech home"><Logo markClassName="size-7" /></Link>
           <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">A technology company building practical software products for real business operations, based in Yangon, Myanmar.</p>
         </div>
         <FooterGroup title="Navigate" links={[["Home", "/"], ["About", "/about"], ["Products", "/products"], ["Contact", "/contact"]]} />
-        <FooterGroup title="Product" links={[["FOM Order Manager", "https://getfom.com/"], ["Product overview", "/products"]]} />
+        <FooterGroup title="Products" links={[["FOM Order Manager", "https://getfom.com/"], ["Billleaf", "https://billleaf.com/"], ["All products", "/products"]]} />
         <div>
           <h2 className="text-sm font-semibold">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">

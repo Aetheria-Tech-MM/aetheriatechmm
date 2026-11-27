@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
@@ -108,8 +109,8 @@ export default function Page() {
 
       <section className="border-y border-onyx-border bg-onyx py-20 text-onyx-foreground sm:py-26">
         <div className="site-container grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-          <div><p className="eyebrow">What&apos;s next</p><h2 className="mt-4 max-w-2xl font-heading text-4xl font-bold tracking-[-0.03em] text-onyx-foreground sm:text-5xl">FOM is where we&apos;re starting.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-onyx-muted">We&apos;re building toward a small portfolio of practical software products, each designed around a real business need. FOM Order Manager is the first; it won&apos;t be the last.</p></div>
-          <div className="flex items-center gap-3 lg:justify-end" aria-hidden="true"><span className="size-12 rounded-md border border-onyx-border" /><span className="h-px w-12 bg-onyx-border" /><span className="size-18 rounded-lg border border-brand bg-[#1f2444] shadow-lg shadow-brand/15" /><span className="h-px w-12 border-t border-dashed border-onyx-border" /><span className="size-12 rounded-md border border-dashed border-onyx-border" /></div>
+          <div><p className="eyebrow">What&apos;s next</p><h2 className="mt-4 max-w-2xl font-heading text-4xl font-bold tracking-[-0.03em] text-onyx-foreground sm:text-5xl">FOM is where we&apos;re starting.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-onyx-muted">We&apos;re building toward a small portfolio of practical software products, each designed around a real business need. FOM Order Manager came first, and Billleaf, a business workspace for freelancers, is next. Each keeps its own name and look, built to the same standard.</p></div>
+          <div className="flex items-center gap-3 lg:justify-end" aria-hidden="true"><Image src="/brand/products/fom-mark.svg" alt="" width={64} height={64} unoptimized className="size-16 rounded-lg bg-white p-1" /><span className="h-px w-10 bg-onyx-border" /><Image src="/brand/products/billleaf-mark.svg" alt="" width={64} height={64} unoptimized className="size-16 rounded-lg bg-white p-1.5" /><span className="h-px w-10 border-t border-dashed border-onyx-border" /><span className="size-12 rounded-md border border-dashed border-onyx-border" /></div>
         </div>
       </section>
 
