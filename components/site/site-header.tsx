@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
@@ -12,15 +12,20 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ]
+
+const subscribeNoop = () => () => {}
 
 export function SiteHeader() {
   const pathname = usePathname()
   const { resolvedTheme, setTheme } = useTheme()
+  // The server can't know the saved theme, so report "light" until hydrated to keep the markup identical.
+  const hydrated = useSyncExternalStore(subscribeNoop, () => true, () => false)
+  const isDark = hydrated && resolvedTheme === "dark"
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -66,9 +71,9 @@ export function SiteHeader() {
                   href={link.href}
                   className={cn(
                     "relative py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-brand after:transition-transform",
-                    pathname === link.href && "text-foreground after:scale-x-100",
+                    (pathname === link.href || pathname.startsWith(`${link.href}/`)) && "text-foreground after:scale-x-100",
                   )}
-                  aria-current={pathname === link.href ? "page" : undefined}
+                  aria-current={(pathname === link.href || pathname.startsWith(`${link.href}/`)) ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -81,16 +86,16 @@ export function SiteHeader() {
           <button
             type="button"
             role="switch"
-            aria-checked={resolvedTheme === "dark"}
+            aria-checked={isDark}
             className="relative h-[26px] w-11 shrink-0 rounded-full border border-border-strong bg-surface-sunken text-faint transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-3 focus-visible:ring-offset-background"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
           >
             <HugeiconsIcon icon={Sun03Icon} size={12} strokeWidth={1.8} className="absolute left-1 top-1/2 -translate-y-1/2" />
             <HugeiconsIcon icon={Moon02Icon} size={12} strokeWidth={1.8} className="absolute right-1 top-1/2 -translate-y-1/2" />
             <span className="absolute left-0.5 top-0.5 size-[20px] rounded-full bg-foreground shadow-sm transition-transform duration-200 ease-[cubic-bezier(.22,.61,.36,1)] dark:translate-x-[18px] dark:bg-brand-strong" />
           </button>
-          <Link href="/contact" className={cn(buttonVariants(), "hidden md:inline-flex")}>Get in touch</Link>
+          <Link href="/contact" className={cn(buttonVariants(), "hidden md:inline-flex")}>Talk to us</Link>
           <button
             type="button"
             className="flex size-10 flex-col items-center justify-center gap-[5px] md:hidden"
@@ -117,7 +122,7 @@ export function SiteHeader() {
             ))}
           </ul>
           <div className="site-container px-0">
-            <Link href="/contact" tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className={cn(buttonVariants({ size: "lg" }), "flex w-full")}>Get in touch</Link>
+            <Link href="/contact" tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className={cn(buttonVariants({ size: "lg" }), "flex w-full")}>Talk to us</Link>
           </div>
       </nav>
     </header>
