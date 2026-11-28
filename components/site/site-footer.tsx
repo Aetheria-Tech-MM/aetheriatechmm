@@ -8,10 +8,10 @@ export function SiteFooter() {
       <div className="site-container grid gap-10 md:grid-cols-[1.7fr_1fr_1fr_1.4fr]">
         <div>
           <Link href="/" aria-label="Aetheria Tech home"><Logo markClassName="size-7" /></Link>
-          <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">A technology company building practical software products for real business operations, based in Yangon, Myanmar.</p>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">A software company in Yangon, Myanmar. We build FOM Order Manager and Billleaf, and custom software for businesses.</p>
         </div>
-        <FooterGroup title="Navigate" links={[["Home", "/"], ["About", "/about"], ["Products", "/products"], ["Contact", "/contact"]]} />
-        <FooterGroup title="Products" links={[["FOM Order Manager", "https://getfom.com/"], ["Billleaf", "https://billleaf.com/"], ["All products", "/products"]]} />
+        <FooterGroup title="Products" links={[["FOM Order Manager", "/products/fom"], ["Billleaf", "/products/billleaf"], ["All products", "/products"]]} />
+        <FooterGroup title="Company" links={[["About", "/about"], ["Services", "/services"], ["Contact", "/contact"]]} />
         <div>
           <h2 className="text-sm font-semibold">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">

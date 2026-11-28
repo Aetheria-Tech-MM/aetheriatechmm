@@ -109,6 +109,10 @@
     --color-brand-soft: var(--brand-soft);
     --color-brand-contrast: var(--brand-contrast);
     --color-logo-accent: var(--logo-accent);
+    --color-product: var(--product);
+    --color-product-ink: var(--product-ink);
+    --color-product-soft: var(--product-soft);
+    --color-product-line: var(--product-line);
     --color-surface-raised: var(--surface-raised);
     --color-surface-sunken: var(--surface-sunken);
     --color-faint: var(--faint);
@@ -177,6 +181,43 @@
 }
 
 @layer components {
+  /* Product accent scopes: company chrome stays amber, product sections take their own colour. */
+  .product-fom {
+    --product: #e85a24;
+    --product-ink: #c2410c;
+    --product-soft: #fdf0e9;
+    --product-line: #f6c7b0;
+  }
+  .dark .product-fom {
+    --product: #f07a4a;
+    --product-ink: #f59a73;
+    --product-soft: hsl(18 38% 13%);
+    --product-line: hsl(18 40% 26%);
+  }
+  .product-billleaf {
+    --product: #15803d;
+    --product-ink: #15803d;
+    --product-soft: #ebf7ef;
+    --product-line: #b5e2c4;
+  }
+  .dark .product-billleaf {
+    --product: #4ade80;
+    --product-ink: #6ee7a0;
+    --product-soft: hsl(145 32% 11%);
+    --product-line: hsl(145 30% 22%);
+  }
+
+  /* Sections settle into place as they scroll in; they start visible, so nothing waits on the animation. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+      }
+    }
+  }
+
   .site-container {
     @apply mx-auto w-full max-w-[1180px] px-5 sm:px-7 lg:px-8;
   }
@@ -213,5 +254,12 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0.55;
+    transform: translateY(18px);
   }
 }

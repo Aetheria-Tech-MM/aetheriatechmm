@@ -10,7 +10,7 @@ export const metadata: Metadata = createPageMetadata({ title: "Contact Aetheria 
 export default function ContactPage() {
   return (
     <main id="main">
-      <PageHero eyebrow="Contact" title="Let's talk.">Questions about FOM Order Manager, or about Aetheria Tech in general — reach us directly, or prepare a message below.</PageHero>
+      <PageHero eyebrow="Contact" title="Let's talk.">Questions about FOM Order Manager or Billleaf, a project you have in mind, or a partnership. Email us directly or prepare a message below.</PageHero>
       <section className="py-20 sm:py-28"><div className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
         <div className="space-y-8">
           <ContactItem title="Email"><a className="text-brand hover:underline" href="mailto:aetheria.techmm@gmail.com">aetheria.techmm@gmail.com</a></ContactItem>

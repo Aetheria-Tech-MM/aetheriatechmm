@@ -1,118 +1,118 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons"
+import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 
+import { ProductMini, ProductShowcase } from "@/components/product/product-card"
+import { ContactCta, FactsStrip, SectionHeading } from "@/components/site/page-sections"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ContactCta, SectionHeading } from "@/components/site/page-sections"
-import { cn } from "@/lib/utils"
+import { COMPANY, PRINCIPLES, SERVICES } from "@/lib/company"
+import { PRODUCTS } from "@/lib/products"
 import { createPageMetadata } from "@/lib/seo"
 import { SITE_URL } from "@/lib/site"
+import { cn } from "@/lib/utils"
 
-export const metadata: Metadata = createPageMetadata({ title: "Aetheria Tech — Practical software products for business operations", description: "Aetheria Tech Company Limited builds practical software products for real business workflows. Our current product, FOM Order Manager, brings chat-driven orders, customers, and delivery into one workspace.", path: "/", absoluteTitle: true })
+export const metadata: Metadata = createPageMetadata({
+  title: "Aetheria Tech: software that runs real businesses",
+  description: "Aetheria Tech builds FOM Order Manager for chat-first shops and Billleaf for freelancers, and custom web and mobile software for businesses. Based in Yangon, Myanmar.",
+  path: "/",
+  absoluteTitle: true,
+})
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: COMPANY.legalName,
+  url: SITE_URL,
+  email: COMPANY.email,
+  foundingDate: String(COMPANY.founded),
+  address: { "@type": "PostalAddress", streetAddress: "No.36, Thiri Yadanar St, Shwe Hnin Si Ward, Mingaladon", addressLocality: "Yangon", addressCountry: "MM" },
+  makesOffer: PRODUCTS.map((product) => ({ "@type": "Offer", itemOffered: { "@type": "SoftwareApplication", name: product.name, applicationCategory: "BusinessApplication", operatingSystem: "Web, Android, iOS", url: product.url } })),
+}
 
 export default function Page() {
-  const approach = [
-    ["Product-first", "Every feature has to earn its place in a real workflow."],
-    ["Practical engineering", "We build around how orders, delivery, and daily operations actually happen."],
-    ["User-focused", "Software should be understandable for owners and staff without lengthy onboarding."],
-    ["Continuous improvement", "Our products evolve through real usage and feedback from the businesses running them."],
-  ]
-
   return (
     <main id="main">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Aetheria Tech Company Limited", url: SITE_URL, email: "aetheria.techmm@gmail.com", address: { "@type": "PostalAddress", streetAddress: "No.36, Thiri Yadanar St, Shwe Hnin Si Ward, Mingaladon", addressLocality: "Yangon", addressCountry: "MM" }, makesOffer: { "@type": "Offer", itemOffered: { "@type": "SoftwareApplication", name: "FOM Order Manager", applicationCategory: "BusinessApplication", operatingSystem: "Web, Android, iOS", url: "https://getfom.com/" } } }) }} />
-      <section className="relative overflow-hidden pb-18 pt-26">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_25%,color-mix(in_oklch,var(--brand)_16%,transparent),transparent_36%)]" />
-        <div className="site-container grid items-center gap-14 lg:grid-cols-[1.06fr_.94fr]">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Practical software, built in Yangon</p>
-            <h1 className="mt-5 max-w-3xl font-heading text-5xl font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-6xl lg:text-7xl">Software built for how businesses actually operate.</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">Aetheria Tech designs and builds practical software products for real operational problems — starting with FOM Order Manager, our workspace for chat-driven order management.</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="https://getfom.com/" className={cn(buttonVariants({ size: "lg" }), "h-11 px-5")}>Explore FOM <HugeiconsIcon icon={ArrowUpRight01Icon} /></Link>
-              <Link href="/about" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 px-5")}>About Aetheria</Link>
-            </div>
-            <p className="mt-8 text-sm text-muted-foreground">Based in Yangon, Myanmar — building for teams who run their operations through everyday tools.</p>
-          </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
 
-          <div className="relative mx-auto aspect-[6/5] w-full max-w-xl rounded-lg border border-border bg-card p-5 shadow-[var(--shadow-lg)]" aria-hidden="true">
-            <div className="absolute inset-0 rounded-[2rem] bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:28px_28px] opacity-45" />
-            <div className="absolute left-[9%] top-[20%] grid gap-12">
-              {["Messenger", "Telegram", "Viber"].map((label) => <div key={label} className="rounded-full border border-brand/40 bg-background px-3 py-1.5 text-xs font-semibold text-brand shadow-[var(--shadow-sm)]">{label}</div>)}
+      <section className="relative overflow-hidden pb-16 pt-20 sm:pt-26">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_20%,color-mix(in_oklch,var(--brand)_10%,transparent),transparent_40%)]" aria-hidden="true" />
+        <div className="site-container grid items-center gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,.9fr)]">
+          <div className="min-w-0">
+            <p className="eyebrow">Software company · Yangon, Myanmar</p>
+            <h1 className="mt-5 max-w-3xl font-heading text-5xl font-extrabold leading-[1.03] tracking-[-0.045em] text-balance sm:text-6xl lg:text-[4.25rem]">Software that runs real businesses.</h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">We build and run two products: FOM Order Manager for shops that sell through chat, and Billleaf for freelancers. We also build custom software for businesses.</p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link href="/products" className={cn(buttonVariants({ size: "lg" }), "h-11 px-5")}>Explore our products</Link>
+              <Link href="/services" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 px-5")}>Work with us</Link>
             </div>
-            <div className="absolute bottom-[16%] right-[7%] top-[15%] w-[54%] rounded-2xl border border-border bg-background/95 p-5 shadow-xl">
-              <div className="flex items-center gap-2"><span className="size-2 rounded-full bg-brand" /><span className="h-2 w-24 rounded bg-foreground/16" /></div>
-              <div className="my-5 h-px bg-border" />
-              <div className="space-y-3"><span className="block h-2 w-4/5 rounded bg-foreground/14" /><span className="block h-2 w-3/5 rounded bg-foreground/9" /><span className="block h-2 w-full rounded bg-foreground/9" /></div>
-              <div className="absolute bottom-5 left-5 right-5 rounded-sm bg-brand-soft p-3"><span className="block h-2 w-2/3 rounded bg-brand" /></div>
-            </div>
+          </div>
+          <div className="grid min-w-0 gap-3">
+            <p className="text-sm font-medium text-muted-foreground">Our products</p>
+            {PRODUCTS.map((product) => <ProductMini key={product.slug} product={product} />)}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border bg-surface-sunken py-20 sm:py-26">
-        <div className="site-container grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="eyebrow">About Aetheria</p>
-            <h2 className="mt-3 font-heading text-3xl font-bold tracking-[-0.03em] sm:text-4xl">We build products, not just projects.</h2>
-            <div className="mt-6 space-y-4 leading-7 text-muted-foreground">
-              <p>Aetheria Tech Company Limited develops software products for businesses, designed around workflows people already use — chat, spreadsheets, and phone calls.</p>
-              <p>FOM Order Manager is the starting point: software shaped by how chat-first shops actually take and fulfil orders, built and maintained by our engineering team in Yangon.</p>
-            </div>
-            <Link href="/about" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-7 px-5")}>More about Aetheria</Link>
+      <section aria-labelledby="chooser" className="pb-20">
+        <div className="site-container">
+          <h2 id="chooser" className="sr-only">Find the product for you</h2>
+          <div className="grid gap-3 md:grid-cols-2">
+            {PRODUCTS.map((product) => (
+              <Link key={product.slug} href={`/products/${product.slug}`} className={cn(product.scope, "group flex items-center justify-between gap-6 rounded-lg border border-border bg-surface-sunken px-6 py-5 transition-colors hover:border-product-line hover:bg-product-soft")}>
+                <span>
+                  <span className="block text-sm text-muted-foreground">{product.chooser.hint}</span>
+                  <span className="mt-1 block font-heading text-xl font-bold tracking-[-0.02em]">{product.chooser.label}</span>
+                </span>
+                <span className="flex items-center gap-2 text-sm font-semibold text-product-ink">{product.name}<HugeiconsIcon icon={ArrowRight01Icon} size={18} className="transition-transform group-hover:translate-x-0.5" /></span>
+              </Link>
+            ))}
           </div>
-          <div className="grid grid-cols-2 gap-4 rounded-lg border border-border bg-background p-5">
-            {["Customer chat", "Draft orders", "Delivery status", "Business reports"].map((item, index) => (
-              <div key={item} className={cn("rounded-md border border-border p-5", index === 1 && "border-brand/50 bg-brand-soft")}>
-                <span className="text-xs font-bold text-brand">0{index + 1}</span><p className="mt-8 font-heading font-bold">{item}</p>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-surface-sunken py-20 sm:py-28">
+        <div className="site-container">
+          <SectionHeading eyebrow="Products" title="Two products, built for two kinds of business">Each product has its own name and look, and the same team behind it.</SectionHeading>
+          <div className="grid gap-8">
+            {PRODUCTS.map((product, index) => <ProductShowcase key={product.slug} product={product} flip={index % 2 === 1} headingLevel="h3" />)}
+          </div>
+        </div>
+      </section>
+
+      <section className="reveal py-20 sm:py-28">
+        <div className="site-container">
+          <SectionHeading eyebrow="How we work" title="One company, one standard" />
+          <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+            {PRINCIPLES.map((item) => (
+              <div key={item.title} className="border-t border-border pt-5">
+                <h3 className="font-heading text-lg font-bold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 sm:py-28">
-        <div className="site-container grid gap-12 md:grid-cols-2">
-          <div><p className="eyebrow">Mission</p><h2 className="mt-3 font-heading text-3xl font-bold leading-tight tracking-[-0.03em]">Build practical technology that makes businesses simpler to run.</h2></div>
-          <div><p className="eyebrow">Vision</p><h2 className="mt-3 font-heading text-3xl font-bold leading-tight tracking-[-0.03em]">Products businesses come to depend on.</h2></div>
-        </div>
-      </section>
-
-      <section id="product" className="border-y border-border bg-surface-sunken py-20 sm:py-26">
-        <div className="site-container grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <div className="relative min-h-96 overflow-hidden rounded-lg border border-border bg-background p-6 shadow-[var(--shadow-sm)]">
-            <div className="w-3/5 rounded-lg border border-border bg-muted/40 p-4"><div className="h-2 w-4/5 rounded bg-foreground/15" /><div className="mt-4 rounded-md bg-brand-soft p-4"><div className="h-2 w-full rounded bg-brand/70" /><div className="mt-2 h-2 w-2/3 rounded bg-brand/40" /></div></div>
-            <div className="absolute bottom-6 right-6 w-[58%] rounded-lg border border-brand/45 bg-background p-5 shadow-[var(--shadow-md)]"><p className="text-xs font-bold text-brand">DRAFT ORDER</p><div className="my-4 h-px bg-border" /><div className="space-y-3"><div className="h-2 w-3/4 rounded bg-foreground/15" /><div className="h-2 w-full rounded bg-foreground/10" /><div className="h-2 w-4/5 rounded bg-foreground/10" /></div><div className="mt-8 h-9 rounded-sm bg-foreground" /></div>
-          </div>
-          <div>
-            <p className="eyebrow">Our product</p>
-            <h2 className="mt-3 font-heading text-4xl font-bold tracking-[-0.03em]">FOM Order Manager</h2>
-            <p className="mt-5 text-lg leading-8 text-muted-foreground">A cleaner workflow for chat-driven orders, customers, and delivery — for shops that sell through Messenger, Telegram, and Viber.</p>
-            <p className="mt-4 leading-7 text-muted-foreground">FOM brings customer conversations, draft orders, customer history, delivery status, and owner reporting into one workspace, synced across web, Android, and iOS.</p>
-            <div className="mt-6 flex flex-wrap gap-2">{["Messenger", "Telegram", "Viber", "Web", "Android", "iOS"].map((item) => <span key={item} className="rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium">{item}</span>)}</div>
-            <div className="mt-8 flex gap-3"><Link href="https://getfom.com/" className={cn(buttonVariants({ size: "lg" }), "px-5")}>Visit FOM</Link><Link href="/products" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-5")}>Learn more</Link></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 sm:py-28">
+      <section className="reveal border-y border-border bg-surface-sunken py-20 sm:py-24">
         <div className="site-container">
-          <SectionHeading eyebrow="Why Aetheria" title="How we approach building software" />
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {approach.map(([title, text], index) => <Card key={title}><CardContent><span className="text-xs font-bold text-brand">0{index + 1}</span><h3 className="mt-6 font-heading text-lg font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></CardContent></Card>)}
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading eyebrow="Services" title="Custom software for your business">The team behind FOM and Billleaf can build for you too.</SectionHeading>
+            <Link href="/services" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mb-10 px-5")}>All services</Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {SERVICES.map((service) => (
+              <Link key={service.slug} href={`/services#${service.slug}`} className="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-border-strong">
+                <HugeiconsIcon icon={service.icon} size={24} className="text-brand" />
+                <h3 className="mt-5 font-heading text-lg font-bold">{service.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{service.summary}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-onyx-border bg-onyx py-20 text-onyx-foreground sm:py-26">
-        <div className="site-container grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-          <div><p className="eyebrow">What&apos;s next</p><h2 className="mt-4 max-w-2xl font-heading text-4xl font-bold tracking-[-0.03em] text-onyx-foreground sm:text-5xl">FOM is where we&apos;re starting.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-onyx-muted">We&apos;re building toward a small portfolio of practical software products, each designed around a real business need. FOM Order Manager came first, and Billleaf, a business workspace for freelancers, is next. Each keeps its own name and look, built to the same standard.</p></div>
-          <div className="flex items-center gap-3 lg:justify-end" aria-hidden="true"><Image src="/brand/products/fom-mark.svg" alt="" width={64} height={64} unoptimized className="size-16 rounded-lg bg-white p-1" /><span className="h-px w-10 bg-onyx-border" /><Image src="/brand/products/billleaf-mark.svg" alt="" width={64} height={64} unoptimized className="size-16 rounded-lg bg-white p-1.5" /><span className="h-px w-10 border-t border-dashed border-onyx-border" /><span className="size-12 rounded-md border border-dashed border-onyx-border" /></div>
-        </div>
-      </section>
+      <FactsStrip />
 
       <ContactCta />
     </main>
